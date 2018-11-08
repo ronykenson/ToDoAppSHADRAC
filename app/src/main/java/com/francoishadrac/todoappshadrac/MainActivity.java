@@ -1,4 +1,4 @@
- package com.francoishadrac.todoappshadrac;
+package com.francoishadrac.todoappshadrac;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         lvItems = (ListView) findViewById(R.id.lvItems);
         lvItems.setAdapter(aTodoAdapter);
         etEditText = (EditText) findViewById(R.id.etEditText);
+
         lvItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
@@ -42,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateArrayItems() {
-        readItems();
+        todoItems = new ArrayList<String>();
         aTodoAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, todoItems);
     }
+
 
     private void readItems(){
         File filesDir = getFilesDir();
